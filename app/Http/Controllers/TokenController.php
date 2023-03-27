@@ -28,15 +28,11 @@ class TokenController extends Controller
 
         $token = $request->user()->createToken($request->token_name);
 
-        return Inertia::render('Profile/Edit', [
-            'plainTextToken' => $token->plainTextToken,
-            'token' => $token,
-        ]);
+        return  compact('token');
     }
 
     public function destroy($token_id)
     {
-
         auth()
             ->user()
             ->tokens()
